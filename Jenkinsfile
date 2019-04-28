@@ -15,9 +15,7 @@ pipeline {
 
 	stage('Test') {
 	    steps {
-		sh "docker run -d -p 8080:8080 --name jenkins ${params.IMAGE_NAME}:latest"
-		sh 'while [ $(docker inspect --format "{{json .State.Health.Status}}" -eq "starting")]'
-		sh '[ $(docker inspect --format "{{json .State.Health.Status}}") -eq "healthy" ] || exit 1'
+		sh "bash -x test.sh"
 	    }
 	}
 
