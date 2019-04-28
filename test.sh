@@ -1,12 +1,24 @@
 #!/usr/bin/env bash
 
-IMAGE_NAME=${1:-jenkins}
-CONTAINER_NAME=${1:-jenkins}
+usage() {
+    echo <<EOF
+$0 IMAGE_NAME CONTAINER_NAME
+EOF
+}
 
 cleanup() {
     docker stop $CONTAINER_NAME
 }
 trap cleanup EXIT
+
+IMAGE_NAME=$1
+if [ -z "$IMAGE_NAME" ]
+then
+    usage
+    exit 1
+fi
+CONTAINER_NAME=${1:-jenkins}
+
 
 docker run --detach --name $CONTAINER_NAME "${IMAGE_NAME}:latest" >/dev/null
 if [ $? -ne 0 ]
