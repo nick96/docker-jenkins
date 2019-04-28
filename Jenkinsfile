@@ -15,7 +15,7 @@ pipeline {
 
 	stage('Test') {
 	    steps {
-		sh "bash -x test.sh"
+		sh "bash -x test.sh ${params.IMAGE_NAME}"
 	    }
 	}
 
