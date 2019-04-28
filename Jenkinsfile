@@ -8,8 +8,8 @@ pipeline {
     stages {
 	stage('Build') {
 	    steps {
-		sh "docker build -f Dockerfile -t ${params.IMAGE_NAME}:latest"
-		sh "docker build -f Dockerfile -t ${params.IMAGE_NAME}:${GIT_COMMIT}"
+		sh "docker build -f Dockerfile -t ${params.IMAGE_NAME}:latest ."
+		sh "docker build -f Dockerfile -t ${params.IMAGE_NAME}:${GIT_COMMIT} ."
 	    }
 	}
 
@@ -37,7 +37,6 @@ pipeline {
     post {
 	always {
 	    sh "docker rmi -f ${params.IMAGE_NAME}:${GIT_COMMIT}"
-	    sh "docker rmi -f ${params.IMAGE_NAME}:latest"
 	}
     }
 }
