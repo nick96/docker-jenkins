@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     parameters {
-	string(name: 'IMAGE_NAME', defaultValue: 'quay.io/nick96/jenkins')
+	string(name: 'IMAGE_NAME', defaultValue: 'nick96/jenkins')
     }
 
     stages {
