@@ -17,7 +17,7 @@ then
     usage
     exit 1
 fi
-CONTAINER_NAME=${1:-jenkins}
+CONTAINER_NAME=${2:-jenkins}
 
 
 docker run --detach --name $CONTAINER_NAME "${IMAGE_NAME}:latest" >/dev/null
