@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     parameters {
-	string(name: 'IMAGE_NAME', defaultValue: 'nick96/jenkins')
+	string(name: 'IMAGE_NAME', defaultValue: 'quay.io/nick96/jenkins')
     }
 
     stages {
@@ -21,7 +21,7 @@ pipeline {
 
 	stage('Publish') {
 	    steps {
-		withDockerRegistry([credentialsId: 'jenkins-nick96-dockerhub', url: '']) {
+		withDockerRegistry([credentialsId: 'jenkins-nspain-quay-io', url: 'https://quay.io/api/v1/']) {
 		    echo "Pushing image tag '${GIT_COMMIT}'..."
 		    sh "docker push ${params.IMAGE_NAME}:${GIT_COMMIT}"
 
