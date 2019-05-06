@@ -1,12 +1,12 @@
-FROM hashicorp/terraform:0.11:13 as terraform
+FROM hashicorp/terraform:0.11.13 as terraform
 
 FROM jenkins/jenkins:jdk11
 
-COPY --from=terraform /root/go/bin/terraform /usr/local/bin/terraform
+COPY --from=terraform ./bin/terraform /usr/local/bin/terraform
 
 USER root
 RUN apt-get update && \
-	apt-get install -y git ansible terraform && \
+	apt-get install -y git ansible && \
 	rm -rf /var/lib/apt/lists/*
 
 USER jenkins
