@@ -44,7 +44,7 @@ favorite:2.0.2
 blueocean-autofavorite:0.1
 token-macro:1.12.1
 pipeline-stage-step:2.1-beta-1
-prometheus-plugin:2.0.0
+prometheus:2.0.0
 email-ext:2.66
 ssh-agent:1.17
 thinBackup:1.9
